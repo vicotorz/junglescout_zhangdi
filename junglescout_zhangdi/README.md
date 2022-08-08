@@ -9,7 +9,7 @@ Design detail document：https://docs.qq.com/doc/DZXVOaklyTXVodGlj
 
 Usage：
 （1）Install mysql on Mac：https://cloud.tencent.com/developer/article/1868895
-（2）git pull ...(Git website)
+（2）git clone ...(Git website)
 （3）mvn clean package -Dmaven.test.skip=true
 （4）execute DDL sql in src/main/resources/ScrapeInfoDDL.sql
 （5）java -cp junglescout_zhangdi-1.0-SNAPSHOT-jar-with-dependencies.jar com.js.main.ApplicationMain ASIN1;ASIN2;ASIN3...
