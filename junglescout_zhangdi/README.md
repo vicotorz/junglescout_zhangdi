@@ -1,4 +1,5 @@
 Amazon ASIN related info scrape
+Author:victorz
 
 Input：ASIN（you can put ASIN info like ASIN1;ASIN2;ASIN3...）
 Output：Get ASIN、Star、Product rank，and save the info into database
