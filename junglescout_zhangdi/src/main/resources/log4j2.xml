@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!--
+    配置日志内容输出的位置及格式
+    -->
+    <Appenders>
+        <!--
+        Console：控制台输出
+        name="Console"：该配置的唯一标识
+        target="SYSTEM_OUT"：所使用的输出语句
+        -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--
+            配置日志数据格式
+            %d{HH:mm:ss.SSS}：时间格式
+            [%t]：线程
+            %-5level：所属日志级别
+            %logger{36}：当前日志输出的位置（哪个方法输出的该日志）
+            %msg：日志信息
+            %n：换行
+            -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!--日志文件输出-->
+        <File name="syslogFile" fileName="./logs/app.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <!--
+        配置需要日志输出的包
+
+        name:需要打印日志的包的引用路径
+        level：打印的日志最小等级（此等级以上的都打印）
+        additivity="false":配置存在重复输出的日志只输出一次
+    -->
+    <Loggers>
+        <Logger name="mybatis.mapper.UserMapper" level="trace" additivity="false">
+            <!--
+                  配置当前包中的日志信息输出位置
+                  ref的值为Appenders配置中的一个name值
+            -->
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="syslogFile"/>
+        </Logger>
+        <!--配置当前日志的根级别，根级别是统一输出级别，如果未单独设置日志级别则按照次级别进行日志输出-->
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
